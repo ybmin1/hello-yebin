@@ -10,7 +10,8 @@ const BackgroundAnimationEffect: React.FC = () => {
     const initApp = async () => {
       const app = new PIXI.Application();
       await app.init({
-        resizeTo: window,
+        width: window.innerWidth,
+        height: 1500,
         canvas: document.createElement("canvas"),
       });
 
@@ -75,9 +76,10 @@ const BackgroundAnimationEffect: React.FC = () => {
       style={{
         width: "100%",
         height: "100%",
-        position: "fixed",
+        position: "absolute",
         top: 0,
         left: 0,
+        zIndex: -1,
       }}
     />
   );
