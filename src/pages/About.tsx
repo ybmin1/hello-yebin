@@ -297,6 +297,7 @@ function About() {
         </div>
       </FadeIn>
     </div>
+    // download CV, Contact ME
   );
 }
 
