@@ -23,35 +23,29 @@ function Home() {
 
   useEffect(() => {
     const rotateText = () => {
-      // Enter animation for 900ms (from 0 to 900ms)
+      // Enter animation for 500ms (from 0 to 500ms)
       setAnimationState("enter");
-
-      // Active state for 3200ms (from 900ms to 4100ms)
+      // Active state for 2000ms (from 500ms to 2500ms)
       const activeTimeout = setTimeout(() => {
         setAnimationState("active");
-      }, 900);
-
-      // Exit animation for 900ms (from 4100ms to 5000ms)
+      }, 500);
+      // Exit animation for 500ms (from 2500ms to 3000ms)
       const exitTimeout = setTimeout(() => {
         setAnimationState("exit");
-      }, 4100);
-
+      }, 2500);
       // Change word
       const rotateTimeout = setTimeout(() => {
         setCurrentWordIndex((prev) =>
           prev === words.length - 1 ? 0 : prev + 1
         );
-        setAnimationState("enter");
-      }, 5000);
-
+      }, 3000);
       return () => {
         clearTimeout(activeTimeout);
         clearTimeout(exitTimeout);
         clearTimeout(rotateTimeout);
       };
     };
-
-    const intervalId = setInterval(rotateText, 5000);
+    const intervalId = setInterval(rotateText, 3000);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -60,8 +54,7 @@ function Home() {
     animationState: "enter" | "active" | "exit"
   ) => {
     return word.split("").map((letter, index) => {
-      const calculateLetterDelay = (index / (word.length - 1)) * 520;
-
+      const calculateLetterDelay = (index / (word.length - 1)) * 310;
       return (
         <span
           key={index}
