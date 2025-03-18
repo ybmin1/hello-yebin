@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import BackgroundAnimationEffect from "../components/BackgroundAnimationEffect";
+import Button from "../components/Button";
+import DownloadCV from "../components/DownloadCV";
 
 const textContent = {
   hello: "Hello,",
@@ -20,6 +23,7 @@ function Home() {
   const [animationState, setAnimationState] = useState<
     "enter" | "active" | "exit"
   >("enter");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const rotateText = () => {
@@ -49,6 +53,9 @@ function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const onClickWorkWithMe = () => {
+    navigate("/contact");
+  };
   const renderLetters = (
     word: string,
     animationState: "enter" | "active" | "exit"
@@ -96,7 +103,7 @@ function Home() {
     <div className="w-screen min-h-screen relative">
       <BackgroundAnimationEffect />
       <div className="absolute inset-0 mt-[60px] text-white">
-        <div className="h-[600px] flex flex-col justify-center items-start p-[10px] sm:p-[40px] md:p-[55px] lg:p-[100px] transition-all duration-300 ease-in-out">
+        <div className="min-w-[400px] h-[600px] flex flex-col justify-center items-start p-[10px] sm:p-[40px] md:p-[55px] lg:p-[100px] transition-all duration-300 ease-in-out">
           <h1 className="font-bold pb-[10px] text-5xl sm:text-6xl md:text-7xl transition-all duration-300 ease-in-out">
             {textContent.hello}
           </h1>
@@ -117,15 +124,12 @@ function Home() {
               ))}
             </div>
           </h1>
-          <button
-            className="inline-block px-[20px] bg-black border-2 border-white rounded-[30px] shadow-[4px_4px_0_0_white] text-white font-semibold text-center select-none touch-manipulation focus:outline-none focus-visible:outline-none active:shadow-[2px_2px_0_0_white] active:transform active:translate-x-[2px] active:translate-y-[2px] relative overflow-hidden group my-[80px] md:my-[30px] text-[15px] md:text-[18px] transition-all duration-300 ease-in-out
-          "
-          >
-            <span className="relative z-20">{textContent.button}</span>
-            <span className="absolute -left-[110px] -top-[50px] w-[50px] h-[200px] bg-white opacity-30 rotate-[35deg] -z-100 transition-all duration-550 ease-cubic-bezier group-hover:left-full"></span>
-          </button>
+          <div className="flex gap-2">
+            <Button onClick={onClickWorkWithMe}>{textContent.button}</Button>
+            <DownloadCV />
+          </div>
         </div>
-        <div className="h-[600px] flex items-start justify-start sm:justify-end p-[25px] sm:p-[40px] md:p-[55px] lg:p-[100px] transition-all duration-300 ease-in-out">
+        <div className="h-[600px] flex items-start justify-start sm:justify-end p-[10px] sm:p-[20px] lg:p-[30px] transition-all duration-300 ease-in-out">
           <div className="w-full min-w-[350px] sm:w-2/3 md:w-1/2 transition-all duration-300 ease-in-out">
             <h2 className="mb-[50px] font-bold text-4xl md:text-5xl ransition-all duration-300 ease-in-out">
               {textContent.myApproach}
