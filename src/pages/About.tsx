@@ -1,5 +1,6 @@
 import { BiLogoPhp, BiLogoTypescript } from "react-icons/bi";
 import { DiJavascript1 } from "react-icons/di";
+import { FaFigma, FaGitAlt } from "react-icons/fa";
 import {
   IoLogoCss3,
   IoLogoGithub,
@@ -8,17 +9,16 @@ import {
   IoLogoPython,
   IoLogoReact,
 } from "react-icons/io5";
-import { FaFigma, FaGitAlt } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
 import { SiJest, SiJira, SiMysql } from "react-icons/si";
 import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
+import Button from "../components/Button.tsx";
+import DownloadCV from "../components/DownloadCV.tsx";
 import FadeIn from "../components/FadeIn.tsx";
 import profilePhoto from "../img/profile-photo.png";
 import profilePhotoBg from "../img/profile-photo-bg.png";
-import Button from "../components/Button.tsx";
-import DownloadCV from "../components/DownloadCV.tsx";
-import { Navigate, useNavigate } from "react-router-dom";
 
 interface dataSkills {
   title: string;
