@@ -16,6 +16,9 @@ import { useMemo } from "react";
 import FadeIn from "../components/FadeIn.tsx";
 import profilePhoto from "../img/profile-photo.png";
 import profilePhotoBg from "../img/profile-photo-bg.png";
+import Button from "../components/Button.tsx";
+import DownloadCV from "../components/DownloadCV.tsx";
+import { Navigate, useNavigate } from "react-router-dom";
 
 interface dataSkills {
   title: string;
@@ -152,9 +155,14 @@ const textContent = {
   skills: "Skills",
   experience: "Experience",
   education: "Education",
+  contactMe: "Contact Me",
 };
 
 function About() {
+  const navigate = useNavigate();
+  const onClickContactMe = () => {
+    navigate("/contact");
+  };
   const renderedSkills = useMemo(() => {
     return dataSkills.map((category) => (
       <div key={category.title} className="py-4 text-left">
@@ -289,11 +297,10 @@ function About() {
         </div>
       </FadeIn>
       <div className="flex w-full border-t border-gray-300"></div>
-      {/* download CV, Contact ME will be updated */}
       <FadeIn>
-        <div className="flex items-center h-[400px]">
-          <div>Contact Me</div>
-          <div>Download CV</div>
+        <div className="flex pt-[50px] pb-[150px] gap-7">
+          <Button onClick={onClickContactMe}>{textContent.contactMe}</Button>
+          <DownloadCV />
         </div>
       </FadeIn>
     </div>
