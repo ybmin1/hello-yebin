@@ -9,6 +9,8 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "node",
-    "types": ["@testing-library/jest-dom", "@types/node"]
-  }
+    "types": ["@testing-library/jest-dom", "@types/node"],
+    "allowImportingTsExtensions": true
+  },
+  "include": ["src/**/*"]
 }
