@@ -22,7 +22,7 @@ import profilePhotoBg from "../img/profile-photo-bg.png";
 
 interface dataSkills {
   title: string;
-  skills: Array<{ name: string; icon: React.ComponentType }>;
+  skills: Array<{ name: string; icon: React.ElementType }>;
 }
 interface data {
   role?: string;
