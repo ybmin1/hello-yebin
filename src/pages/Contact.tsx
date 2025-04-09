@@ -1,3 +1,4 @@
+import { ComponentType, SVGProps } from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
@@ -11,7 +12,31 @@ interface TextContent {
   linkedin: string;
   github: string;
 }
+interface ContactItemProps {
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  text: string;
+  href?: string;
+}
 
+const ContactItem = ({ icon: Icon, text, href }: ContactItemProps) => {
+  const content = (
+    <div className="flex items-center gap-2">
+      <Icon className="text-2xl" />
+      <span>{text}</span>
+    </div>
+  );
+  return href ? (
+    <a
+      href={textContent.linkedin}
+      target="_blank"
+      className="flex items-center gap-2 visited:text-white"
+    >
+      {content}
+    </a>
+  ) : (
+    content
+  );
+};
 const textContent: TextContent = {
   contact: "Contact",
   contactMe: "Contact Me",
@@ -54,26 +79,17 @@ function Contact() {
             <h2 className="text-2xl lg:text-3xl font-bold lg:absolute top-0">
               {textContent.contactMe}
             </h2>
-            <div className="flex items-center gap-2">
-              <MdEmail className="text-2xl" />
-              <span>{textContent.email}</span>
-            </div>
-            <a
+            <ContactItem icon={MdEmail} text={textContent.email} />
+            <ContactItem
+              icon={FaLinkedin}
+              text={textContent.linkedin}
               href={textContent.linkedin}
-              target="_blank"
-              className="flex items-center gap-2 visited:text-white"
-            >
-              <FaLinkedin className="text-2xl" />
-              <span>{textContent.linkedin}</span>
-            </a>
-            <a
+            />
+            <ContactItem
+              icon={SiGithub}
+              text={textContent.github}
               href={textContent.github}
-              target="_blank"
-              className="flex items-center gap-2 visited:text-white"
-            >
-              <SiGithub className="text-2xl" />
-              <span>{textContent.github}</span>
-            </a>
+            />
           </div>
         </div>
         <EmailForm />
