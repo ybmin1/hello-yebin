@@ -27,7 +27,7 @@ const ContactItem = ({ icon: Icon, text, href }: ContactItemProps) => {
   );
   return href ? (
     <a
-      href={textContent.linkedin}
+      href={href}
       target="_blank"
       className="flex items-center gap-2 visited:text-white"
     >
